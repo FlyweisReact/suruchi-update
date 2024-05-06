@@ -1,12 +1,12 @@
 /** @format */
 
 import React, { useEffect, useState } from "react";
-import HOC from "../../layout/HOC";
+import HOC from "../layout/HOC";
 import { Table, Modal, Button, Form } from "react-bootstrap";
-import data from "../../../Constant/constant.json";
-import { TextEditor } from "../../../utils/utils";
+import data from "../../Constant/constant.json";
+import { TextEditor } from "../../utils/utils";
 
-const Blog = () => {
+const Events = () => {
   const [edit, setEdit] = useState(false);
   const [modalShow, setModalShow] = useState(false);
 
@@ -27,7 +27,7 @@ const Blog = () => {
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
             {" "}
-            {edit ? "Edit Ad Banner" : "Create New Ad Banner"}
+            {edit ? "Edit Event" : "Create Event"}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -36,8 +36,8 @@ const Blog = () => {
               <Form.Label>Image</Form.Label>
               <Form.Control type="file" />
             </Form.Group>
-          
-          <TextEditor label={"Description"} />
+
+            <TextEditor label={"Description"} />
 
             <Button
               style={{
@@ -68,7 +68,7 @@ const Blog = () => {
             className="tracking-widest text-slate-900 font-semibold uppercase"
             style={{ fontSize: "1.5rem" }}
           >
-            Blogs ( Total : {data?.blogs?.length} )
+            Events ( Total : {data?.blogs?.length} )
           </span>
           <div className="d-flex gap-1">
             <button
@@ -125,4 +125,4 @@ const Blog = () => {
   );
 };
 
-export default HOC(Blog);
+export default HOC(Events);

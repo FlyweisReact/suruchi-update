@@ -3,69 +3,37 @@ import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Login from "./E-CommerceAdmin/forms/Login";
-import Dashboard from "./E-CommerceAdmin/pages/Dashboard";
-import ECategory from "./E-CommerceAdmin/pages/ECategory";
+import ECategory from "./Pages/ECategory";
 import Order from "./E-CommerceAdmin/pages/Orders/Order";
 import SingleOrder from "./E-CommerceAdmin/pages/Orders/SingleOrder";
-import Product from "./E-CommerceAdmin/pages/Product/Product";
-import CreateProduct from "./E-CommerceAdmin/pages/Product/CreateProduct";
-import SingleProduct from "./E-CommerceAdmin/pages/Product/SingleProduct";
-import EditProduct from "./E-CommerceAdmin/pages/Product/EditProduct";
+import Product from "./Pages/Product/Product";
+import CreateProduct from "./Pages/Product/CreateProduct";
+import EditProduct from "./Pages/Product/EditProduct";
 import AboutUs from "./E-CommerceAdmin/pages/AboutUs/AboutUs";
 import CreateAboutUs from "./E-CommerceAdmin/pages/AboutUs/create-about-us";
-import EditAboutUs from "./E-CommerceAdmin/pages/AboutUs/edit-about-us";
-import Query from "./E-CommerceAdmin/pages/Query/Query";
-import Contact from "./E-CommerceAdmin/pages/Contact/Contact";
-import User from "./E-CommerceAdmin/pages/User/User";
 import Blog from "./E-CommerceAdmin/pages/Blog/Blog";
-import Banner from "./E-CommerceAdmin/pages/Banner/Banner";
-import UserData from "./E-CommerceAdmin/pages/User/UserData";
-import Privacy from "./E-CommerceAdmin/pages/PrivacyPolicy/Privacy";
-import Terms from "./E-CommerceAdmin/pages/Terms/Terms";
+import UserData from "./Pages/Customer/UserData";
 import Brand from "./E-CommerceAdmin/pages/Brand";
 import Nutrition from "./E-CommerceAdmin/pages/Nutrition";
-import ProductType from "./E-CommerceAdmin/pages/ProductType";
-import SkinCondition from "./E-CommerceAdmin/pages/SkinCondition";
-import SkinType from "./E-CommerceAdmin/pages/SkinType";
-import Service from "./E-CommerceAdmin/pages/Service/Service";
-import SingleService from "./E-CommerceAdmin/pages/Service/SingleService";
-import CreateService from "./E-CommerceAdmin/pages/Service/CreateService";
-import Editservice from "./E-CommerceAdmin/pages/Service/Editservice";
-import Subscription from "./E-CommerceAdmin/pages/Subscription/Subscription";
-import CreateSubscription from "./E-CommerceAdmin/pages/Subscription/CreateSubscription";
-import EditSubscription from "./E-CommerceAdmin/pages/Subscription/EditSubscription";
-import Reviews from "./E-CommerceAdmin/pages/Reviews/Reviews";
 import Faq from "./E-CommerceAdmin/pages/FAQ/Faq";
-import Ingredeints from "./E-CommerceAdmin/pages/Ingredeints/Ingredeints";
-import GiftCard from "./E-CommerceAdmin/pages/GiftCard/GiftCard";
-import CreateGiftCard from "./E-CommerceAdmin/pages/GiftCard/CreateGiftCard";
-import Acne from "./E-CommerceAdmin/pages/Acne/Acne";
-import AcneSuggestion from "./E-CommerceAdmin/pages/AcneSuggestion/AcneSuggestion";
-import AddOnService from "./E-CommerceAdmin/pages/AddOnService/AddOnService";
 import Gallery from "./E-CommerceAdmin/pages/Gallery/Gallery";
-import SingleBanner from "./E-CommerceAdmin/pages/Banner/SingleBanner";
-import AddHomeBanner from "./E-CommerceAdmin/pages/Banner/AddHomeBanner";
-import AddPartnerBanner from "./E-CommerceAdmin/pages/Banner/AddPartnerBanner";
-import AddShopBanner from "./E-CommerceAdmin/pages/Banner/AddShopBanner";
-import AddServiceBanner from "./E-CommerceAdmin/pages/Banner/AddServiceBanner";
-import AddPromotionBanner from "./E-CommerceAdmin/pages/Banner/AddPromotionBanner";
-import ServiceOrder from "./E-CommerceAdmin/pages/Orders/ServiceOrder";
-import ServiceOrderId from "./E-CommerceAdmin/pages/Orders/ServiceOrderId";
-import Frequently from "./E-CommerceAdmin/pages/Frequently/Frequently";
-import Transaction from "./E-CommerceAdmin/pages/Transaction/Transaction";
-import Rewards from "./E-CommerceAdmin/pages/Rewards/Rewards";
-import ProductReviews from "./E-CommerceAdmin/pages/Product/ProductReviews";
-import ShippingPrivacy from "./E-CommerceAdmin/pages/PrivacyPolicy/ShippingPrivacy";
-import ReturnPolicy from "./E-CommerceAdmin/pages/PrivacyPolicy/ReturnPolicy";
-import Chat from "./E-CommerceAdmin/pages/Chat/Chat";
-import Another from "./E-CommerceAdmin/pages/Scheduler/Another";
-import CalenderNotification from "./E-CommerceAdmin/pages/Scheduler/Notification/CalenderNotification";
 import { ReactNotifications } from "react-notifications-component";
-import Subadmin from "./E-CommerceAdmin/pages/SubAdmin/Subadmin";
 import { useEffect } from "react";
-import CardDetails from "./E-CommerceAdmin/pages/Card/CardDetails";
-import AcneQuery from "./E-CommerceAdmin/pages/AcneSuggestion/AcneQuery";
-import EditUser from "./E-CommerceAdmin/pages/User/EditUser";
+import AdBanner from "./E-CommerceAdmin/pages/AdBanner";
+import Events from "./E-CommerceAdmin/pages/Events";
+import ForgetPassword from "./Pages/ForgetPassword";
+import Dashboard from "./Pages/Dashboard";
+import Customers from "./Pages/Customer/Customers";
+import EditCustomer from "./Pages/Customer/EditCustomer";
+import CustomerOrder from "./Pages/Orders/CustomerOrder";
+import CustomerDiscount from "./Pages/Customer/CustomerDiscount";
+import Vendors from "./Pages/Vendors/Vendors";
+import CreateVendor from "./Pages/Vendors/CreateVendor";
+import SubCategory from "./Pages/SubCategory";
+import SingleProduct from "./Pages/Product/SingleProduct";
+import ProductReviews from "./Pages/Product/ProductReviews";
+import Inventory from "./Pages/Inventory/Inventory";
+import ViewInventory from "./Pages/Inventory/ViewInventory";
 
 function App() {
   useEffect(() => {
@@ -91,75 +59,34 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/getCard" element={<CardDetails />} />
-        
-        <Route path="/banner" element={<Banner />} />
-        <Route path="/banner/:id" element={<SingleBanner />} />
-        <Route path="/privacy-policy" element={<Privacy />} />
-        <Route path="/terms" element={<Terms />} />
-        <Route path="/brand" element={<Brand />} />
-
-        <Route path="/Product-type" element={<ProductType />} />
-        <Route path="/skin-condition" element={<SkinCondition />} />
-        <Route path="/skinType" element={<SkinType />} />
-
-        
-        <Route path="/product/:id" element={<SingleProduct />} />
-        
-        <Route path="/edit-product/:product" element={<EditProduct />} />
-        <Route path="/service" element={<Service />} />
-        <Route path="/service/:id" element={<SingleService />} />
-        <Route path="/create-service" element={<CreateService />} />
-        <Route path="/edit-service/:id" element={<Editservice />} />
-        <Route path="/subscription" element={<Subscription />} />
-        <Route path="/create-subscription" element={<CreateSubscription />} />
-        <Route path="/edit-subscription/:id" element={<EditSubscription />} />
-        <Route path="/reviews" element={<Reviews />} />
-        <Route path="/about-us" element={<AboutUs />} />
-        <Route path="/create-about-us" element={<CreateAboutUs />} />
-        <Route path="/edit-about-us/:id" element={<EditAboutUs />} />
-        <Route path="/faq" element={<Faq />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/query" element={<Query />} />
-        <Route path="/ingredients" element={<Ingredeints />} />
-        <Route path="/giftCard" element={<GiftCard />} />
-        <Route path="/creatGift" element={<CreateGiftCard />} />
-        <Route path="/acne" element={<Acne />} />
-        <Route path="/acne-suggestion" element={<AcneSuggestion />} />
-        <Route path="/acne-query" element={<AcneQuery />} />
-        <Route path="/add-on-service" element={<AddOnService />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/create-home-banner" element={<AddHomeBanner />} />
-        <Route path="/create-partner-banner" element={<AddPartnerBanner />} />
-        <Route path="/create-shop-banner" element={<AddShopBanner />} />
-        <Route path="/create-service-banner" element={<AddServiceBanner />} />
-        <Route   path="/create-promotion-banner"  element={<AddPromotionBanner />}    />
-   
-        <Route path="/Orders" element={<Order />} />
-        <Route path="/order/:id" element={<SingleOrder />} />
-        <Route path="/service-order" element={<ServiceOrder />} />
-        <Route path="/service-order/:id" element={<ServiceOrderId />} />
-        <Route path="/frequently" element={<Frequently />} />
-        <Route path="/transaction" element={<Transaction />} />
-        <Route path="/rewards" element={<Rewards />} />
-        <Route path="/product-review/:id" element={<ProductReviews />} />
-        <Route path="/shipping-privacy" element={<ShippingPrivacy />} />
-        <Route path="/return-privacy" element={<ReturnPolicy />} />
-        <Route path="/chat" element={<Chat />} />
-        <Route path="/another" element={<Another />} />
-      
-        <Route path="/sub-admin" element={<Subadmin />} />
-        <Route path="/edit-user/:id" element={<EditUser />} />
-
-        {/* user */}
-        <Route path="/user" element={<User />} />
+        <Route path="/user" element={<Customers />} />
         <Route path="/user-data/:id" element={<UserData />} />
-        <Route path="/notification" element={<CalenderNotification />} />
-        <Route path="/adBanner" element={<Blog />} />
+        <Route path="/adBanner" element={<AdBanner />} />
         <Route path="/Category" element={<ECategory />} />
         <Route path="/grocery-stores" element={<Nutrition />} />
         <Route path="/Product" element={<Product />} />
         <Route path="/create-product" element={<CreateProduct />} />
+        <Route path="/edit-product/:product" element={<EditProduct />} />
+        <Route path="/product/:id" element={<SingleProduct />} />
+        <Route path="/product-review/:id" element={<ProductReviews />} />
+        <Route path="/hotDeals" element={<Gallery />} />
+        <Route path="/brand" element={<Brand />} />
+        <Route path="/blogs" element={<Blog />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/Orders" element={<Order />} />
+        <Route path="/order/:id" element={<SingleOrder />} />
+        <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/create-about-us" element={<CreateAboutUs />} />
+        <Route path="/faq" element={<Faq />} />
+        <Route path="/forget-password" element={<ForgetPassword />} />
+        <Route path="/edit-customer/:id" element={<EditCustomer />} />
+        <Route path="/customer-order" element={<CustomerOrder />} />
+        <Route path="/customer-discount" element={<CustomerDiscount />} />
+        <Route path="/vendors" element={<Vendors />} />
+        <Route path="/create-vendors" element={<CreateVendor />} />
+        <Route path="/sub-category" element={<SubCategory />} />
+        <Route path="/inventory" element={<Inventory />} />
+        <Route path="/view-inventory" element={<ViewInventory />} />
       </Routes>
     </>
   );

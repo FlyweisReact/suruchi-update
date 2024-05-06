@@ -1,12 +1,11 @@
 /** @format */
 
 import React, { useEffect, useState } from "react";
-import HOC from "../../layout/HOC";
+import HOC from "../layout/HOC";
 import { Table, Modal, Button, Form } from "react-bootstrap";
-import data from "../../../Constant/constant.json";
-import { TextEditor } from "../../../utils/utils";
+import data from "../../Constant/constant.json";
 
-const Blog = () => {
+const AdBanner = () => {
   const [edit, setEdit] = useState(false);
   const [modalShow, setModalShow] = useState(false);
 
@@ -36,8 +35,6 @@ const Blog = () => {
               <Form.Label>Image</Form.Label>
               <Form.Control type="file" />
             </Form.Group>
-          
-          <TextEditor label={"Description"} />
 
             <Button
               style={{
@@ -68,7 +65,7 @@ const Blog = () => {
             className="tracking-widest text-slate-900 font-semibold uppercase"
             style={{ fontSize: "1.5rem" }}
           >
-            Blogs ( Total : {data?.blogs?.length} )
+            Ad Banner's ( Total : {data?.addBanners?.length} )
           </span>
           <div className="d-flex gap-1">
             <button
@@ -89,18 +86,16 @@ const Blog = () => {
               <tr>
                 <th>Sno.</th>
                 <th>Image</th>
-                <th>Description</th>
                 <th> </th>
               </tr>
             </thead>
             <tbody>
-              {data?.blogs?.map((i, index) => (
+              {data?.addBanners?.map((i, index) => (
                 <tr key={index}>
                   <td> #{index + 1} </td>
                   <td>
                     <img src={i.img} alt="" className="adBannerImg" />
                   </td>
-                  <td>{i.desc}</td>
 
                   <td>
                     <span className="flexCont">
@@ -125,4 +120,4 @@ const Blog = () => {
   );
 };
 
-export default HOC(Blog);
+export default HOC(AdBanner);

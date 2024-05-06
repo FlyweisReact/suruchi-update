@@ -18,31 +18,24 @@ const Sidebar = ({ hamb, setHamb }) => {
     {
       icon: <i className="fa-solid fa-user  text-xl mr-3 rounded-full"></i>,
       link: "/user",
-      name: "Customer's",
+      name: " Customer",
     },
     {
-      icon: <i className="fa-solid fa-bell text-xl mr-3 rounded-full"></i>,
-      link: "/notification",
-      name: "Notification's",
-    },
-    {
-      icon: <i className="fa-solid fa-image  text-xl mr-3 rounded-full"></i>,
-      link: "/adBanner",
-      name: "Ad banner's",
+      icon: <i className="fa-solid fa-user  text-xl mr-3 rounded-full"></i>,
+      link: "/vendors",
+      name: " Vendors/Stores",
     },
     {
       icon: <i className="fa-solid fa-list  text-xl mr-3 rounded-full"></i>,
       link: "/Category",
       name: "Category",
     },
-
     {
-      icon: (
-        <i className="fa-solid fa-cart-shopping  text-xl mr-3 rounded-full"></i>
-      ),
-      link: "/grocery-stores",
-      name: "Grocery Store's",
+      icon: <i className="fa-solid fa-list  text-xl mr-3 rounded-full"></i>,
+      link: "/sub-category",
+      name: "Sub Category",
     },
+
     {
       icon: (
         <i className="fa-solid fa-bag-shopping text-xl mr-3 rounded-full"></i>
@@ -50,51 +43,63 @@ const Sidebar = ({ hamb, setHamb }) => {
       link: "/Product",
       name: "Products",
     },
+    {
+      icon: (
+        <i className="fa-solid fa-warehouse text-xl mr-3 rounded-full"></i>
+      ),
+      link: "/inventory",
+      name: "Inventory",
+    },
+    // {
+    //   icon: <i className="fa-solid fa-image  text-xl mr-3 rounded-full"></i>,
+    //   link: "/adBanner",
+    //   name: "Ad banner's",
+    // },
 
-    {
-      icon: (
-        <i className="fa-solid fa-address-card text-xl mr-3 rounded-full" />
-      ),
-      link: "/hotDeals",
-      name: "Hot Deals",
-    },
+    // {
+    //   icon: (
+    //     <i className="fa-solid fa-address-card text-xl mr-3 rounded-full" />
+    //   ),
+    //   link: "/hotDeals",
+    //   name: "Hot Deals",
+    // },
 
-    {
-      icon: <i className="fa-solid fa-user  text-xl mr-3 rounded-full"></i>,
-      link: "/brand",
-      name: "Brand",
-    },
-    {
-      icon: <i className="fa-solid fa-user  text-xl mr-3 rounded-full"></i>,
-      link: "/blogs",
-      name: "Blogs",
-    },
-    {
-      icon: <i className="fa-solid fa-user  text-xl mr-3 rounded-full"></i>,
-      link: "/events",
-      name: "Events",
-    },
-    {
-      icon: (
-        <i className="fa-solid fa-cart-shopping text-xl mr-3 rounded-full"></i>
-      ),
-      link: "/Orders",
-      name: "Orders",
-    },
-    {
-      icon: (
-        <i className="fa-solid fa-address-card text-xl mr-3 rounded-full" />
-      ),
-      link: "/about-us",
-      name: "About Us",
-    },
-    {
-      icon: (
-        <i className="fa-solid fa-address-card text-xl mr-3 rounded-full" />
-      ),
-      link: "/faq",
-      name: "FAQ",
-    },
+    // {
+    //   icon: <i className="fa-solid fa-user  text-xl mr-3 rounded-full"></i>,
+    //   link: "/brand",
+    //   name: "Brand",
+    // },
+    // {
+    //   icon: <i className="fa-solid fa-user  text-xl mr-3 rounded-full"></i>,
+    //   link: "/blogs",
+    //   name: "Blogs",
+    // },
+    // {
+    //   icon: <i className="fa-solid fa-user  text-xl mr-3 rounded-full"></i>,
+    //   link: "/events",
+    //   name: "Events",
+    // },
+    // {
+    //   icon: (
+    //     <i className="fa-solid fa-cart-shopping text-xl mr-3 rounded-full"></i>
+    //   ),
+    //   link: "/Orders",
+    //   name: "Orders",
+    // },
+    // {
+    //   icon: (
+    //     <i className="fa-solid fa-address-card text-xl mr-3 rounded-full" />
+    //   ),
+    //   link: "/about-us",
+    //   name: "About Us",
+    // },
+    // {
+    //   icon: (
+    //     <i className="fa-solid fa-address-card text-xl mr-3 rounded-full" />
+    //   ),
+    //   link: "/faq",
+    //   name: "FAQ",
+    // },
   ];
 
   const logOut = () => {

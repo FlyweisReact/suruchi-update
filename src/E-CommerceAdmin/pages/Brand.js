@@ -3,36 +3,11 @@
 import React, { useEffect, useState } from "react";
 import HOC from "../layout/HOC";
 import { Table, Modal, Form, Button, Alert } from "react-bootstrap";
-import axios from "axios";
-import { toast } from "react-toastify";
+import data from "../../Constant/constant.json";
 
 const Brand = () => {
-  const [data, setData] = useState([]);
   const [modalShow, setModalShow] = useState(false);
-  const [id, setId] = useState(null);
   const [edit, setEdit] = useState(false);
-
-  const token = localStorage.getItem("AdminToken");
-  const Auth = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
-
-  const fetchHandler = async () => {
-    try {
-      const { data } = await axios.get(
-        `${process.env.React_App_Baseurl}api/v1/admin/Brand/allBrand`
-      );
-      setData(data?.data);
-    } catch (e) {
-      console.log(e.message);
-    }
-  };
-
-  useEffect(() => {
-    fetchHandler();
-  }, []);
 
   useEffect(() => {
     window.scrollTo({
@@ -40,47 +15,8 @@ const Brand = () => {
       behavior: "instant",
     });
   }, []);
-  
+
   function MyVerticallyCenteredModal(props) {
-    const [image, setImage] = useState("");
-    const [description, setDescription] = useState("");
-
-    const fd = new FormData();
-    fd.append("name", description);
-    fd.append("image", image);
-
-    const postHandler = async (e) => {
-      e.preventDefault();
-      try {
-        const { data } = await axios.post(
-          `${process.env.React_App_Baseurl}api/v1/admin/Brand/addBrand`,
-          fd,
-          Auth
-        );
-        toast.success(data.message);
-        fetchHandler();
-        props.onHide();
-      } catch (e) {
-        console.log(e);
-      }
-    };
-
-    const putHandler = async (e) => {
-      e.preventDefault();
-      try {
-        const { data } = await axios.put(
-          `${process.env.React_App_Baseurl}api/v1/admin/Brand/updateBrand/${id}`,
-          fd,
-          Auth
-        );
-        toast.success(data.message);
-        props.onHide();
-        fetchHandler();
-      } catch (e) {
-        console.log(e);
-      }
-    };
-
     return (
       <Modal
         {...props}
@@ -94,22 +30,10 @@ const Brand = () => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={edit ? putHandler : postHandler}>
+          <Form>
             <Form.Group className="mb-3">
               <Form.Label>Image</Form.Label>
-              <Form.Control
-                type="file"
-                required
-                onChange={(e) => setImage(e.target.files[0])}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Title</Form.Label>
-              <Form.Control
-                type="text"
-                required
-                onChange={(e) => setDescription(e.target.value)}
-              />
+              <Form.Control type="file" required />
             </Form.Group>
 
             <Button
@@ -123,17 +47,6 @@ const Brand = () => {
       </Modal>
     );
   }
-
-  const handleDelete = async (ide) => {
-    const url = `${process.env.React_App_Baseurl}api/v1/admin/Brand/deleteBrand/${ide}`;
-    try {
-      const { data } = await axios.delete(url, Auth);
-      toast.success(data.message);
-      fetchHandler();
-    } catch (e) {
-      console.log(e);
-    }
-  };
 
   return (
     <>
@@ -149,7 +62,7 @@ const Brand = () => {
               className="tracking-widest text-slate-900 font-semibold uppercase"
               style={{ fontSize: "1.5rem" }}
             >
-              All Brands ({data?.length})
+              All Brands ({data?.brands?.length})
             </span>
             <button
               className="md:py-2 px-3 md:px-4 py-1 rounded-sm bg-[#042b26] text-white tracking-wider"
@@ -162,7 +75,7 @@ const Brand = () => {
             </button>
           </div>
 
-          {data?.length === 0 || !data ? (
+          {data?.brands?.length === 0 || !data ? (
             <Alert>Banner Not Found</Alert>
           ) : (
             <>
@@ -177,27 +90,18 @@ const Brand = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {data?.map((i, index) => (
+                    {data?.brands?.map((i, index) => (
                       <tr key={index}>
                         <td>#{index + 1} </td>
                         <td>
-                          <img
-                            src={i.image}
-                            alt=""
-                            style={{ maxWidth: "100px" }}
-                          />
+                          <img src={i} alt="" style={{ maxWidth: "100px" }} />
                         </td>
-                        <td>{i.name} </td>
                         <td>
                           <span className="flexCont">
-                            <i
-                              className="fa-solid fa-trash"
-                              onClick={() => handleDelete(i._id)}
-                            />
+                            <i className="fa-solid fa-trash" />
                             <i
                               className="fa-solid fa-pen-to-square"
                               onClick={() => {
-                                setId(i._id);
                                 setEdit(true);
                                 setModalShow(true);
                               }}

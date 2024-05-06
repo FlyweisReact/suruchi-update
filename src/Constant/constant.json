@@ -263,7 +263,62 @@
       "title" : "Men Black raglan jacket" ,
       "created_date" : "2024-05-06T09:10:00Z"
     }
+  ],
+  "reviews" : [
+    {
+      
+      "user" : "Andrew",
+      "star" : "5",
+      "description" :"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley"
+    },
+    {
+     
+      "user" : "Robert Fox",
+      "star" : "4",
+      "description" :"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley"
+    }
+  ],
+  "brands" : [
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI4UtRgkD3OaAaz6wkny-hrz2dPmwakCud4VDOld_F&s",
+    "https://media.designrush.com/inspiration_images/292255/conversions/levi_logo_4_82250bd000e1-mobile.jpg",
+    "https://i.pinimg.com/originals/7b/2b/78/7b2b78364c365b1e4786840c0f2a356a.jpg"
+  ],
+  "blogs" :[
+    {
+      "img" : "https://img.freepik.com/free-photo/business-women-signature-document_1388-90.jpg?t=st=1714982212~exp=1714985812~hmac=976055110c8d30e9c27e3f216fd2b56fa0ed276fcc3cf92ae1c1c51235111bac&w=1380" ,
+      "desc" : "Lorem Ipsum is simply dummy text of the printing"
+    },
+    {
+      "img" : "https://img.freepik.com/free-photo/worker-reading-news-with-tablet_1162-83.jpg?t=st=1714982272~exp=1714985872~hmac=17fa99a317981f6a10af743572438aa1f195f9ab507188ef1f71644f32d43a55&w=1380" ,
+      "desc" : "Lorem Ipsum is simply dummy text of the printing "
+    },
+    {
+      "img" : "https://img.freepik.com/free-photo/notepad-laptop-concept_23-2147982614.jpg?t=st=1714982279~exp=1714985879~hmac=d674088aa60fb1c1984e512b20a14313ec8fc86416d214b574d07244ea9d5d61&w=1380" ,
+      "desc" : "Lorem Ipsum is simply dummy text of the printing "
+    }
+  ],
+  "orders":[
+    {
+      "orderId" : "EOV7IM7Z3" ,
+      "date" : "04/22/2024",
+      "total" :"124.99",
+      "OrderStatus" : "confirmed",
+      "paymentStatus" : "Paid"
+    },
+    {
+      "orderId" : "EOV7SD7Z3" ,
+      "date" : "01/22/2024",
+      "total" :"100.99",
+      "OrderStatus" : "confirmed",
+      "paymentStatus" : "Paid"
+    },
+    {
+      "orderId" : "DFV7IM7Z3" ,
+      "date" : "04/12/2024",
+      "total" :"1000",
+      "OrderStatus" : "confirmed",
+      "paymentStatus" : "Paid"
+    }
   ]
-
 
 }

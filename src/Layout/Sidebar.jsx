@@ -21,7 +21,7 @@ const Sidebar = ({ hamb, setHamb }) => {
       name: " Customer",
     },
     {
-      icon: <i className="fa-solid fa-user  text-xl mr-3 rounded-full"></i>,
+      icon: <i className="fa-solid fa-store  text-xl mr-3 rounded-full"></i>,
       link: "/vendors",
       name: " Vendors/Stores",
     },
@@ -31,7 +31,9 @@ const Sidebar = ({ hamb, setHamb }) => {
       name: "Category",
     },
     {
-      icon: <i className="fa-solid fa-list  text-xl mr-3 rounded-full"></i>,
+      icon: (
+        <i className="fa-solid fa-table-list  text-xl mr-3 rounded-full"></i>
+      ),
       link: "/sub-category",
       name: "Sub Category",
     },
@@ -44,62 +46,79 @@ const Sidebar = ({ hamb, setHamb }) => {
       name: "Products",
     },
     {
-      icon: (
-        <i className="fa-solid fa-warehouse text-xl mr-3 rounded-full"></i>
-      ),
+      icon: <i className="fa-solid fa-warehouse text-xl mr-3 rounded-full"></i>,
       link: "/inventory",
       name: "Inventory",
     },
-    // {
-    //   icon: <i className="fa-solid fa-image  text-xl mr-3 rounded-full"></i>,
-    //   link: "/adBanner",
-    //   name: "Ad banner's",
-    // },
+    {
+      icon: <i className="fa-solid fa-truck text-xl mr-3 rounded-full"></i>,
+      link: "/delivery-charges",
+      name: "Delivery Charges",
+    },
+    {
+      icon: (
+        <i className="fa-solid fa-cart-shopping text-xl mr-3 rounded-full"></i>
+      ),
+      link: "/Orders",
+      name: "Orders",
+    },
+    {
+      icon: (
+        <i className="fa-solid fa-credit-card text-xl mr-3 rounded-full"></i>
+      ),
+      link: "/payment",
+      name: "Payment",
+    },
+    {
+      icon: <i className="fa-solid fa-person text-xl mr-3 rounded-full"></i>,
+      link: "/sub-admin",
+      name: "Sub admin",
+    },
+    {
+      icon: (
+        <i className="fa-solid fa-chart-simple text-xl mr-3 rounded-full"></i>
+      ),
+      link: "/analytics",
+      name: "Analytics",
+    },
+    {
+      icon: <i className="fa-solid fa-tag text-xl mr-3 rounded-full"></i>,
+      link: "/coupon",
+      name: "Discount",
+    },
+    {
+      icon: <i className="fa-solid fa-image  text-xl mr-3 rounded-full"></i>,
+      link: "/adBanner",
+      name: "Ad Banner",
+    },
+    {
+      icon: <i className="fa-solid fa-envelope  text-xl mr-3 rounded-full"></i>,
+      link: "/customer-support",
+      name: "Customer Support",
+    },
+    {
+      icon: <i className="fa-solid fa-bell  text-xl mr-3 rounded-full"></i>,
+      link: "/notification",
+      name: "Notification",
+    },
+    {
+      icon: <i className="fa-solid fa-star  text-xl mr-3 rounded-full"></i>,
+      link: "/reviews",
+      name: "Reviews",
+    },
 
-    // {
-    //   icon: (
-    //     <i className="fa-solid fa-address-card text-xl mr-3 rounded-full" />
-    //   ),
-    //   link: "/hotDeals",
-    //   name: "Hot Deals",
-    // },
-
-    // {
-    //   icon: <i className="fa-solid fa-user  text-xl mr-3 rounded-full"></i>,
-    //   link: "/brand",
-    //   name: "Brand",
-    // },
-    // {
-    //   icon: <i className="fa-solid fa-user  text-xl mr-3 rounded-full"></i>,
-    //   link: "/blogs",
-    //   name: "Blogs",
-    // },
-    // {
-    //   icon: <i className="fa-solid fa-user  text-xl mr-3 rounded-full"></i>,
-    //   link: "/events",
-    //   name: "Events",
-    // },
-    // {
-    //   icon: (
-    //     <i className="fa-solid fa-cart-shopping text-xl mr-3 rounded-full"></i>
-    //   ),
-    //   link: "/Orders",
-    //   name: "Orders",
-    // },
-    // {
-    //   icon: (
-    //     <i className="fa-solid fa-address-card text-xl mr-3 rounded-full" />
-    //   ),
-    //   link: "/about-us",
-    //   name: "About Us",
-    // },
-    // {
-    //   icon: (
-    //     <i className="fa-solid fa-address-card text-xl mr-3 rounded-full" />
-    //   ),
-    //   link: "/faq",
-    //   name: "FAQ",
-    // },
+    {
+      icon: <i className="fa-solid fa-question text-xl mr-3 rounded-full" />,
+      link: "/faq",
+      name: "FAQ",
+    },
+    {
+      icon: (
+        <i className="fa-solid fa-shield-halved text-xl mr-3 rounded-full" />
+      ),
+      link: "/privacy",
+      name: "Privacy policy",
+    },
   ];
 
   const logOut = () => {
@@ -111,7 +130,7 @@ const Sidebar = ({ hamb, setHamb }) => {
     <>
       <aside
         className="p-4 h-auto"
-        style={{ backgroundColor: "#459948", minHeight: "100vh" }}
+        style={{ backgroundColor: "rgb(34, 40, 49)", minHeight: "100vh" }}
       >
         {/* Top */}
         <div className="w-full md:hidden relative  p-2 mb-4">
@@ -126,7 +145,6 @@ const Sidebar = ({ hamb, setHamb }) => {
             style={{
               fontSize: "2rem",
               textAlign: "center",
-              textTransform: "uppercase",
             }}
           >
             {" "}
@@ -139,7 +157,7 @@ const Sidebar = ({ hamb, setHamb }) => {
               <Link
                 to={nav.link}
                 key={index}
-                style={{ textDecoration: "none", textTransform: "uppercase" }}
+                style={{ textDecoration: "none" }}
               >
                 <span
                   className="flex my-3 items-center cursor-pointer text-gray-900  tracking-wider p-2 rounded-sm"

@@ -3,7 +3,6 @@
 import { Form } from "react-bootstrap";
 import ReactQuill from "react-quill";
 
-
 export const TextEditor = ({ label }) => {
   return (
     <Form.Group className="mb-3 quill-container">

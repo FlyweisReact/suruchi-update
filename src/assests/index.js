@@ -8,6 +8,7 @@ import shirtsImg from "./Images/shirts.png";
 import shoesImg from "./Images/shoes.png";
 import tshirtImg from "./Images/tshirt.png";
 import watchImg from "./Images/watch.png";
+import userImg from './Images/users.jpg'
 
 export {
   jeansImg,
@@ -18,4 +19,5 @@ export {
   shoesImg,
   tshirtImg,
   watchImg,
+  userImg
 };

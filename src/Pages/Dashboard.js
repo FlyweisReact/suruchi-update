@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import HOC from '../Layout/HOC'
+import HOC from "../Layout/HOC";
 
 const card = [
   {

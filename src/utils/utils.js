@@ -2,6 +2,7 @@
 
 import { Form } from "react-bootstrap";
 import ReactQuill from "react-quill";
+import Select from "react-select";
 
 export const TextEditor = ({ label }) => {
   return (
@@ -49,5 +50,29 @@ export const ValueChecker = (holder, string) => {
     </div>
   ) : (
     ""
+  );
+};
+
+// Debouncing
+export const debouncedSetQuery = ({ term, setSearch }) => {
+  clearTimeout(debouncedSetQuery.timeoutId);
+  debouncedSetQuery.timeoutId = setTimeout(() => {
+    setSearch(term);
+  }, 500);
+};
+
+// ---
+export const ReactSelect = ({ options, setValue, value, inputValue }) => {
+  return (
+    <Select
+      value={value}
+      options={options}
+      onChange={(e) => setValue(e)}
+      onInputChange={(input) => {
+        if (inputValue) {
+          inputValue(input);
+        }
+      }}
+    />
   );
 };

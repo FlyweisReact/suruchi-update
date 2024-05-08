@@ -1,28 +1,55 @@
 /** @format */
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { VscEyeClosed, VscEye } from "react-icons/vsc";
 import { AiOutlineMail } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { createApi } from "../Repository/Repository";
+import { ClipLoader } from "react-spinners";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [pass, setPass] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [inputpass, setInputpass] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "instant",
+  const payload = {
+    email,
+    password,
+  };
+
+  const saveToken = (token) => {
+    localStorage.setItem("token", token);
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const additionalFunctions = [
+      (res) => saveToken(res.accessToken),
+      () => navigate("/dashboard"),
+    ];
+    createApi({
+      url: "api/v1/admin/login",
+      setLoading,
+      payload,
+      successMsg: "Welcome Back !",
+      additionalFunctions,
     });
-  }, []);
+  };
+
   return (
     <>
       <section className="LoginSection">
-        <form>
+        <form onSubmit={submitHandler}>
           <h2>Admin Panel</h2>
           <div className="input_container">
-            <input type="email" placeholder="admin@gmail.com" required />
+            <input
+              type="email"
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="admin@gmail.com"
+              required
+            />
             <AiOutlineMail className="text-xl " />
           </div>
           <div className="input_container">
@@ -30,24 +57,20 @@ const Login = () => {
               type={inputpass ? "text" : "password"}
               placeholder="password"
               required
+              onChange={(e) => setPassword(e.target.value)}
             />
             <span
               onClick={() => {
-                setPass(!pass);
                 setInputpass(!inputpass);
               }}
               className="text-xl cursor-pointer hover:scale-90 "
             >
-              {pass ? <VscEyeClosed /> : <VscEye />}
+              {inputpass ? <VscEyeClosed /> : <VscEye />}
             </span>
           </div>
 
-          <button
-            type="button"
-            className="EcommerceAdminLogin"
-            onClick={() => navigate("/dashboard")}
-          >
-            Log In
+          <button type="submit" className="EcommerceAdminLogin">
+            {loading ? <ClipLoader color="#fff" /> : "Log In"}
           </button>
           <button
             type="button"

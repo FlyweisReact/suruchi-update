@@ -1,10 +1,14 @@
 /** @format */
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import HOC from "../../Layout/HOC";
 import Pagination from "../../Component/Pagination";
 import { Table, Modal, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { getApi } from "../../Repository/Repository";
+import Loader from "../../Component/Loader";
+import NoData from "../../Component/NoData";
+import { userImg } from "../../assests";
 
 function MyVerticallyCenteredModal(props) {
   return (
@@ -47,6 +51,21 @@ function MyVerticallyCenteredModal(props) {
 
 const Vendors = () => {
   const [open, setOpen] = useState(false);
+  const [response, setResponse] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const fetchHandler = () => {
+    getApi({
+      url: "api/v1/admin/getAllVendor",
+      setResponse,
+      setLoading,
+    });
+  };
+
+  useEffect(() => {
+    fetchHandler();
+  }, []);
+
   return (
     <>
       <MyVerticallyCenteredModal show={open} onHide={() => setOpen(false)} />
@@ -56,7 +75,7 @@ const Vendors = () => {
             className="tracking-widest text-slate-900 font-semibold"
             style={{ fontSize: "1.5rem" }}
           >
-            Vendors/Stores ( Total : 5 )
+            Vendors/Stores ( Total : {response?.data?.length} )
           </span>
           <div className="d-flex gap-2">
             <Link to="/create-vendors">
@@ -81,65 +100,71 @@ const Vendors = () => {
           />
         </div>
 
-        <div className="overFlowCont">
-          <Table>
-            <thead>
-              <tr>
-                <th>Sno.</th>
-                <th>Logo</th>
-                <th>Grocery Name</th>
-                <th>Email ID</th>
-                <th>Phone Number</th>
-                <th>Order</th>
-                <th>Status</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td> 1 </td>
-                <td>
-                  {" "}
-                  <img
-                    className="profile-pic"
-                    src={
-                      "https://img.freepik.com/free-photo/3d-cartoon-shop-keeper-character_1048-16763.jpg?t=st=1714997891~exp=1715001491~hmac=74b28cc644d04761f5a6012d977d81905723f01a78e9179841eaabe2074654d1&w=1380"
-                    }
-                    alt=""
-                  />{" "}
-                </td>
-                <td> ABC Store </td>
-                <td> abc@gmail.com </td>
-                <td> +1 (555) 123-4567 </td>
-                <th>
-                  <Link to="/customer-order">View Order</Link>
-                </th>
+        {loading ? (
+          <Loader />
+        ) : response === null ? (
+          <NoData />
+        ) : (
+          <div className="overFlowCont">
+            <Table>
+              <thead>
+                <tr>
+                  <th>Sno.</th>
+                  <th>Logo</th>
+                  <th>Grocery Name</th>
+                  <th>Email ID</th>
+                  <th>Phone Number</th>
+                  <th>Order</th>
+                  <th>Status</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {response?.data?.map((i, index) => (
+                  <tr key={index}>
+                    <td> #{index + 1} </td>
+                    <td>
+                      {" "}
+                      <img
+                        className="profile-pic"
+                        src={i.image ? i.image : userImg}
+                        alt=""
+                      />{" "}
+                    </td>
+                    <td> {i.userName} </td>
+                    <td> {i.email} </td>
+                    <td> {i.phone} </td>
+                    <th>
+                      <Link to="/customer-order">View Order</Link>
+                    </th>
 
-                <th>
-                  Pending{" "}
-                  <i
-                    onClick={() => setOpen(true)}
-                    className="fa-solid fa-rotate-right cursor-pointer"
-                  ></i>
-                </th>
+                    <th>
+                      Pending{" "}
+                      <i
+                        onClick={() => setOpen(true)}
+                        className="fa-solid fa-rotate-right cursor-pointer"
+                      ></i>
+                    </th>
 
-                <td>
-                  <span className="flexCont">
-                    <Link to={`/create-vendors`}>
-                      <i className="fa-solid fa-eye"></i>
-                    </Link>
-                    <Link to={`/create-vendors`}>
-                      <i className="fa-solid fa-pen-to-square"></i>
-                    </Link>
-                    <i className="fa-sharp fa-solid fa-trash"></i>
-                  </span>
-                </td>
-              </tr>
-            </tbody>
-          </Table>
+                    <td>
+                      <span className="flexCont">
+                        <Link to={`/create-vendors`}>
+                          <i className="fa-solid fa-eye"></i>
+                        </Link>
+                        <Link to={`/create-vendors`}>
+                          <i className="fa-solid fa-pen-to-square"></i>
+                        </Link>
+                        <i className="fa-sharp fa-solid fa-trash"></i>
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </div>
+        )}
 
-          <Pagination />
-        </div>
+        <Pagination />
       </section>
     </>
   );

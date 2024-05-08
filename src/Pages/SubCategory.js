@@ -1,12 +1,36 @@
 /** @format */
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Table, Modal, Form } from "react-bootstrap";
 import Pagination from "../Component/Pagination";
 import HOC from "../Layout/HOC";
+import { getApi } from "../Repository/Repository";
 
 const SubCategory = () => {
   const [modalShow, setModalShow] = useState(false);
+  const [ response , setResponse ] = useState(null)
+  const [ loading , setLoading ] = useState(false)
+
+  const fetchHandler = () => {
+    getApi({
+      url : "api/v1/SubCategory/paginate/SubCategoriesSearch",
+      setResponse ,
+      setLoading
+    })
+  }
+
+
+  console.log(response?.data)
+
+  useEffect(() => {
+    fetchHandler()
+  },[])
+
+
+
+
+
+
 
   function MyVerticallyCenteredModal(props) {
     return (

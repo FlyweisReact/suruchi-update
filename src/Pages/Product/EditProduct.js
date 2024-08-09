@@ -1,27 +1,16 @@
 /** @format */
-import React, { useEffect, useState } from "react";
 import HOC from "../../Layout/HOC";
-import { Link } from "react-router-dom";
-import { Form, Button, Row, Col } from "react-bootstrap";
+import { Link, useParams } from "react-router-dom";
+import { Form, Button, Row, Col, FloatingLabel } from "react-bootstrap";
 import Select from "react-select";
 import data from "../../Constant/constant.json";
-import { TextEditor } from "../../utils/utils";
 import BreadCrumb from "../../Component/BreadCrumb";
 
 const EditProduct = () => {
-  const [isMultipleSize, setIsMultipleSize] = useState("false");
-
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "instant",
-    });
-  }, []);
-
+  const { product } = useParams()
   return (
     <section className="sectionCont">
-
-    <BreadCrumb title={"Edit Product"} />
+      <BreadCrumb title={`Edit ${product}`} />
       <Form>
         <Row>
           <Col xs={12} md={12}>
@@ -30,13 +19,50 @@ const EditProduct = () => {
               <Form.Control type="file" multiple />
             </Form.Group>
           </Col>
-          <Col xs={12} md={6}>
+          <Col xs={12} md={3}>
             <Form.Group className="mb-3">
               <Form.Label>Product Name</Form.Label>
-              <Form.Control type="text" required />
+              <Form.Control type="text" value={product} />
             </Form.Group>
           </Col>
-          <Col xs={12} md={6}>
+          <Col xs={12} md={3}>
+            <Form.Group className="mb-3">
+              <Form.Label>Brand Name</Form.Label>
+              <Form.Control type="text" />
+            </Form.Group>
+          </Col>
+          <Col xs={12} md={3}>
+            <Form.Group className="mb-3">
+              <Form.Label>ID</Form.Label>
+              <Form.Control type="text" />
+            </Form.Group>
+          </Col>
+          <Col xs={12} md={3}>
+            <Form.Group className="mb-3">
+              <Form.Label>Price</Form.Label>
+              <Form.Control type="number" min={0} />
+            </Form.Group>
+          </Col>
+          <Col xs={12} md={3}>
+            <Form.Group className="mb-3">
+              <Form.Label>Discounted Price</Form.Label>
+              <Form.Control type="number" min={0} />
+            </Form.Group>
+          </Col>
+          <Col xs={12} md={3}>
+            <Form.Group className="mb-3">
+              <Form.Label>Product Size</Form.Label>
+              <Form.Control type="text" />
+            </Form.Group>
+          </Col>
+          <Col xs={12} md={3}>
+            <Form.Group className="mb-3">
+              <Form.Label>Minimum Order Quantity</Form.Label>
+              <Form.Control type="number" min={0} />
+            </Form.Group>
+          </Col>
+     
+          <Col xs={12} md={3}>
             <Form.Group className="mb-3">
               <Form.Label>Category</Form.Label>
               <Select
@@ -49,108 +75,36 @@ const EditProduct = () => {
               />
             </Form.Group>
           </Col>
-          <Col xs={12} md={12}>
+          <Col xs={12} md={3}>
             <Form.Group className="mb-3">
-              <Form.Label>Brand</Form.Label>
-              <Form.Control type="text" required />
-            </Form.Group>
-          </Col>
-          <Col xs={12} md={12}>
-            <TextEditor label={"Specifications"} />
-          </Col>
-          <Col xs={12} md={6}>
-            <Form.Group className="mb-3">
-              <Form.Label>Discount</Form.Label>
-              <Form.Control type="number" required />
-            </Form.Group>
-          </Col>
-          <Col xs={12} md={6}>
-            <Form.Group className="mb-3">
-              <Form.Label>Expiry Date</Form.Label>
-              <Form.Control type="number" required />
-            </Form.Group>
-          </Col>
-          <Col xs={12} md={12}>
-            <TextEditor label={"Product Description"} />
-          </Col>
-          <Col xs={12} md={12}>
-            <Form.Group className="mb-3">
-              <Form.Label>Occasion</Form.Label>
+              <Form.Label>Sub-category</Form.Label>
               <Select
                 isMulti
                 options={data?.category?.map((i) => ({
                   value: i.title,
                   label: i.title,
                 }))}
-                placeholder="Select Occasion"
+                placeholder="Select Sub-Category"
               />
             </Form.Group>
           </Col>
-          <Col xs={12} md={12}>
-            <TextEditor label={"Material Information"} />
-          </Col>
+
           <Col xs={12} md={12}>
             <Form.Group className="mb-3">
-              <Form.Label>Multiple Sizes</Form.Label>
-              <Form.Select
-                value={isMultipleSize}
-                onChange={(e) => setIsMultipleSize(e.target.value)}
-              >
-                <option value={""}>Selete Your Prefrence</option>
-                <option value={"true"}>Activate</option>
-                <option value={"false"}> Deactivate</option>
-              </Form.Select>
+              <Form.Label>Description</Form.Label>
+              <FloatingLabel>
+                <Form.Control as="textarea" style={{ height: "100px" }} />
+              </FloatingLabel>
             </Form.Group>
           </Col>
-          {isMultipleSize === "false" ? (
-            <>
-              <Col xs={12} md={6}>
-                <Form.Group className="mb-3">
-                  <Form.Label>
-                    Product quantity (for inventory management){" "}
-                  </Form.Label>
-                  <Form.Control type="number" required />
-                </Form.Group>
-              </Col>
-              <Col xs={12} md={6}>
-                <Form.Group className="mb-3">
-                  <Form.Label>
-                    Product Cost (Tax + Delivery charges - If applicable){" "}
-                  </Form.Label>
-                  <Form.Control type="number" required />
-                </Form.Group>
-              </Col>
-            </>
-          ) : (
-            <>
-              <Col xs={12} md={4}>
-                <Form.Group className="mb-3">
-                  <Form.Label>Size</Form.Label>
-                  <Form.Control type="number" required />
-                </Form.Group>
-              </Col>
-              <Col xs={12} md={4}>
-                <Form.Group className="mb-3">
-                  <Form.Label>Cost</Form.Label>
-                  <Form.Control type="number" required />
-                </Form.Group>
-              </Col>
-              <Col xs={12} md={4}>
-                <Form.Group className="mb-3">
-                  <Form.Label>Quantity</Form.Label>
-                  <Form.Control type="number" required />
-                </Form.Group>
-              </Col>
-            </>
-          )}
         </Row>
 
         <div className="w-100 d-flex justify-content-between">
           <Button variant="success" type="submit">
-            Submit
+            Update
           </Button>
 
-          <Link to="/Product">
+          <Link to={-1}>
             <Button variant="dark">Back</Button>
           </Link>
         </div>

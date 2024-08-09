@@ -2,48 +2,37 @@
 
 import React, { useState } from "react";
 import HOC from "../../Layout/HOC";
-import { Table, Modal, Form } from "react-bootstrap";
-import { TextEditor } from "../../utils/utils";
-import Pagination from "../../Component/Pagination";
+import TableLayout from "../../Component/TableLayout";
+import { CreateNotification } from "../../Component/Modals/Modals";
 
 const Notification = () => {
   const [modalShow, setModalShow] = useState(false);
 
-  function MyVerticallyCenteredModal(props) {
-    return (
-      <Modal
-        {...props}
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Create New
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group className="mb-3">
-              <Form.Label>Title</Form.Label>
-              <Form.Control type="file" />
-            </Form.Group>
+  const thead = ["Sno.", "Title", "Description", ""];
 
-            <TextEditor label={"Description"} />
+  const tbody = [
+    [
+      "#1",
+      "New Notification",
+      "Lorem Ipsum is simply dummy text of the printing",
+      <span className="flexCont">
+        <i
+          className="fa-solid fa-pen-to-square"
+          onClick={() => {
+            setModalShow(true);
+          }}
+        />
 
-            <button className="submitBtn" type="submit">
-              Submit
-            </button>
-          </Form>
-        </Modal.Body>
-      </Modal>
-    );
-  }
+        <i className="fa-sharp fa-solid fa-trash"></i>
+      </span>,
+    ],
+  ];
 
   return (
     <>
-      <MyVerticallyCenteredModal
+      <CreateNotification
         show={modalShow}
-        onHide={() => setModalShow(false)}
+        handleClose={() => setModalShow(false)}
       />
 
       <section className="sectionCont">
@@ -52,7 +41,7 @@ const Notification = () => {
             className="tracking-widest text-slate-900 font-semibold uppercase"
             style={{ fontSize: "1.5rem" }}
           >
-            Notification Management
+            Notification (1)
           </span>
           <div className="d-flex gap-1">
             <button
@@ -66,39 +55,7 @@ const Notification = () => {
           </div>
         </div>
 
-        <div className="overFlowCont">
-          <Table>
-            <thead>
-              <tr>
-                <th>Sno.</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th> </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td> #1 </td>
-                <td>New notification</td>
-                <td> Lorem Ipsum is simply dummy text of the printing</td>
-
-                <td>
-                  <span className="flexCont">
-                    <i
-                      className="fa-solid fa-pen-to-square"
-                      onClick={() => {
-                        setModalShow(true);
-                      }}
-                    />
-
-                    <i className="fa-sharp fa-solid fa-trash"></i>
-                  </span>
-                </td>
-              </tr>
-            </tbody>
-          </Table>
-          <Pagination />
-        </div>
+        <TableLayout thead={thead} tbody={tbody} />
       </section>
     </>
   );

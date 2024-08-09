@@ -269,13 +269,13 @@
       
       "user" : "Andrew",
       "star" : "5",
-      "description" :"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley"
+      "description" :"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's "
     },
     {
      
       "user" : "Robert Fox",
       "star" : "4",
-      "description" :"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley"
+      "description" :"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's"
     }
   ],
   "brands" : [
@@ -319,6 +319,46 @@
       "OrderStatus" : "confirmed",
       "paymentStatus" : "Paid"
     }
+  ],
+  "Banners" : [
+    {
+        "src" : "https://img.freepik.com/free-vector/sale-offers-banner-yellow-blue-color-theme_1017-31301.jpg?w=1380&t=st=1714046446~exp=1714047046~hmac=46f31d172df8cc6763a80304bd3e32af132b2fedfdd04f17cebd0856f01b5d38",
+        "type" : "Front"
+    },
+    {
+        "src" : "https://img.freepik.com/free-photo/portrait-young-beautiful-ginger-woman-with-tender-serious-face-crossing-arms-looking-camera-is_1258-120324.jpg",
+        "type" : "Hot Deals"
+    }
+  ],
+  "Subscriptions" : [
+    {
+      "title" : "Basic" , 
+      "price" : 1000,
+      "imageCount" : 100 ,
+      "videoCount" : 0 ,
+       "features" : [ "Image" , "Video" ]
+    },
+    {
+      "title" : "Advance" , 
+      "price" : 2000,
+      "imageCount" : 500 ,
+      "videoCount" : 0 ,
+       "features" : [ "Image" , "Video"  , "Flash Buisness" ]
+    },
+    {
+      "title" : "Premium" , 
+      "price" : 5000,
+      "imageCount" : 500 ,
+      "videoCount" : 0 ,
+       "features" : [ "Image" , "Video" , "Flash Buisness" , "Top in search" ]
+    }
+  ]
+  ,
+  "features" : [
+    "Image" ,
+    "Video" ,
+    "Flash Buisness",
+    "Top in search"
   ]
 
 }

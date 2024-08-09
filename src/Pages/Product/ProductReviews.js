@@ -1,18 +1,20 @@
 /** @format */
-
-import React, { useEffect } from "react";
-import HOC from "../../Layout/HOC";
-import { Table, Alert } from "react-bootstrap";
+import HOC from "../../Layout/HOC"; 
 import data from "../../Constant/constant.json";
+import { useParams } from "react-router-dom";
+import TableLayout from "../../Component/TableLayout";
 
 const ProductReviews = () => {
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "instant",
-    });
-  }, []);
+  const { id } = useParams();
 
+  const thead = ["Sno.", "Rating", "Comment", "User", ""];
+  const tbody = data?.reviews?.map((i, index) => [
+    `#${index + 1}`,
+    i.star,
+    i.description,
+    i.user,
+    <i className="fa-sharp fa-solid fa-trash" />,
+  ]);
   return (
     <>
       <section className="sectionCont">
@@ -21,40 +23,11 @@ const ProductReviews = () => {
             className="tracking-widest text-slate-900 font-semibold uppercase"
             style={{ fontSize: "1.5rem" }}
           >
-            All Product Reviews ( Total : {data?.length} )
+            {id} Reviews ({data?.reviews?.length})
           </span>
         </div>
 
-        <div className="overFlowCont">
-          {data?.reviews?.length === 0 || !data ? (
-            <Alert>No Review Found</Alert>
-          ) : (
-            <Table>
-              <thead>
-                <tr>
-                  <th>Sno.</th>
-                  <th>Rating</th>
-                  <th>Comment</th>
-                  <th>User</th>
-                  <th> </th>
-                </tr>
-              </thead>
-              <tbody>
-                {data?.reviews?.map((i, index) => (
-                  <tr key={index}>
-                    <td> #{index + 1} </td>
-                    <td> {i.star} </td>
-                    <td> {i.description} </td>
-                    <td> {i.user} </td>
-                    <td>
-                      <i className="fa-sharp fa-solid fa-trash"></i>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </Table>
-          )}
-        </div>
+        <TableLayout thead={thead} tbody={tbody} />
       </section>
     </>
   );

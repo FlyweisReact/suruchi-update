@@ -2,49 +2,15 @@
 
 import React, { useState } from "react";
 import HOC from "../../Layout/HOC";
-import { Table, Modal, Form } from "react-bootstrap";
-import { TextEditor } from "../../utils/utils";
-import Pagination from "../../Component/Pagination";
+import { Table } from "react-bootstrap";
+import { CreateFaq } from "../../Component/Modals/Modals";
 
 const Faq = () => {
   const [modalShow, setModalShow] = useState(false);
 
-  function MyVerticallyCenteredModal(props) {
-    return (
-      <Modal
-        {...props}
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Create New
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group className="mb-3">
-              <Form.Label>Question</Form.Label>
-              <Form.Control type="text" />
-            </Form.Group>
-
-            <TextEditor label={"Answer"} />
-
-            <button className="submitBtn" type="submit">
-              Submit
-            </button>
-          </Form>
-        </Modal.Body>
-      </Modal>
-    );
-  }
-
   return (
     <>
-      <MyVerticallyCenteredModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-      />
+      <CreateFaq show={modalShow} handleClose={() => setModalShow(false)} />
 
       <section className="sectionCont">
         <div className="pb-4  w-full flex justify-between items-center">
@@ -52,7 +18,7 @@ const Faq = () => {
             className="tracking-widest text-slate-900 font-semibold"
             style={{ fontSize: "1.5rem" }}
           >
-         FAǪs
+            FAǪs
           </span>
           <div className="d-flex gap-1">
             <button
@@ -97,7 +63,6 @@ const Faq = () => {
               </tr>
             </tbody>
           </Table>
-          <Pagination />
         </div>
       </section>
     </>

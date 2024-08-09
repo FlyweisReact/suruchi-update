@@ -1,14 +1,13 @@
 /** @format */
 
 import React from "react";
+import { Link, useParams } from "react-router-dom";
 import HOC from "../../Layout/HOC";
-import { Link, useNavigate } from "react-router-dom";
 import data from "../../Constant/constant.json";
 import TableLayout from "../../Component/TableLayout";
 
-const Product = () => {
-  const navigate = useNavigate();
-
+const VendorProducts = () => {
+  const { id } = useParams();
   const thead = [
     "Sno.",
     "ID",
@@ -31,16 +30,13 @@ const Product = () => {
     </Link>,
     i.created_date?.slice(0, 10),
     <span className="flexCont">
-      <Link to={`/edit-product/${i.title}`}>
-        <i className="fa-solid fa-pen-to-square" />
-      </Link>
+ 
       <Link to={`/product/${i.title}`}>
         <i className="fa-solid fa-eye" />
       </Link>
       <i className="fa-sharp fa-solid fa-trash"></i>
     </span>,
   ]);
-
   return (
     <>
       <section className="sectionCont">
@@ -49,32 +45,13 @@ const Product = () => {
             className="tracking-widest text-slate-900 font-semibold"
             style={{ fontSize: "1.5rem" }}
           >
-            All Product's ({data?.product?.length})
+            All {id} Product's ({data?.product?.length})
           </span>
-
-          <button
-            className="submitBtn"
-            onClick={() => navigate("/create-product")}
-          >
-            Create New
-          </button>
         </div>
-
-        <div className="filterBox">
-          <img
-            src="https://t4.ftcdn.net/jpg/01/41/97/61/360_F_141976137_kQrdYIvfn3e0RT1EWbZOmQciOKLMgCwG.jpg"
-            alt=""
-          />
-          <input
-            type="search"
-            placeholder="Start typing to search for products"
-          />
-        </div>
-
         <TableLayout thead={thead} tbody={tbody} />
       </section>
     </>
   );
 };
 
-export default HOC(Product);
+export default HOC(VendorProducts);

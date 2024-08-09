@@ -1,6 +1,6 @@
 /** @format */
 
-import React from "react";
+import { Alert } from "react-bootstrap";
 import { ClipLoader } from "react-spinners";
 
 const Loader = () => {
@@ -11,4 +11,8 @@ const Loader = () => {
   );
 };
 
-export default Loader;
+const NotFound = () => {
+  return <Alert className="w-100">No Data Found</Alert>;
+};
+
+export { Loader, NotFound };

@@ -16,14 +16,9 @@ const Sidebar = ({ hamb, setHamb }) => {
       name: "Dashboard",
     },
     {
-      icon: <i className="fa-solid fa-user  text-xl mr-3 rounded-full"></i>,
-      link: "/user",
-      name: " Customer",
-    },
-    {
-      icon: <i className="fa-solid fa-store  text-xl mr-3 rounded-full"></i>,
-      link: "/vendors",
-      name: " Vendors/Stores",
+      icon: <i className="fa-solid fa-image  text-xl mr-3 rounded-full"></i>,
+      link: "/all-banners",
+      name: "Banner",
     },
     {
       icon: <i className="fa-solid fa-list  text-xl mr-3 rounded-full"></i>,
@@ -31,13 +26,10 @@ const Sidebar = ({ hamb, setHamb }) => {
       name: "Category",
     },
     {
-      icon: (
-        <i className="fa-solid fa-table-list  text-xl mr-3 rounded-full"></i>
-      ),
-      link: "/sub-category",
-      name: "Sub Category",
+      icon: <i className="fa-solid fa-store  text-xl mr-3 rounded-full"></i>,
+      link: "/vendors",
+      name: " Vendors",
     },
-
     {
       icon: (
         <i className="fa-solid fa-bag-shopping text-xl mr-3 rounded-full"></i>
@@ -46,55 +38,23 @@ const Sidebar = ({ hamb, setHamb }) => {
       name: "Products",
     },
     {
-      icon: <i className="fa-solid fa-warehouse text-xl mr-3 rounded-full"></i>,
-      link: "/inventory",
-      name: "Inventory",
-    },
-    {
-      icon: <i className="fa-solid fa-truck text-xl mr-3 rounded-full"></i>,
-      link: "/delivery-charges",
-      name: "Delivery Charges",
+      icon: <i className="fa-solid fa-user  text-xl mr-3 rounded-full"></i>,
+      link: "/user",
+      name: "Customer",
     },
     {
       icon: (
-        <i className="fa-solid fa-cart-shopping text-xl mr-3 rounded-full"></i>
+        <i className="fa-solid fa-table-list  text-xl mr-3 rounded-full"></i>
       ),
-      link: "/Orders",
-      name: "Orders",
+      link: "/sub-category",
+      name: "Sub Category",
     },
     {
       icon: (
-        <i className="fa-solid fa-credit-card text-xl mr-3 rounded-full"></i>
+        <i className="fa-solid fa-table-list  text-xl mr-3 rounded-full"></i>
       ),
-      link: "/payment",
-      name: "Payment",
-    },
-    {
-      icon: <i className="fa-solid fa-person text-xl mr-3 rounded-full"></i>,
-      link: "/sub-admin",
-      name: "Sub admin",
-    },
-    {
-      icon: (
-        <i className="fa-solid fa-chart-simple text-xl mr-3 rounded-full"></i>
-      ),
-      link: "/analytics",
-      name: "Analytics",
-    },
-    {
-      icon: <i className="fa-solid fa-tag text-xl mr-3 rounded-full"></i>,
-      link: "/coupon",
-      name: "Discount",
-    },
-    {
-      icon: <i className="fa-solid fa-image  text-xl mr-3 rounded-full"></i>,
-      link: "/adBanner",
-      name: "Ad Banner",
-    },
-    {
-      icon: <i className="fa-solid fa-envelope  text-xl mr-3 rounded-full"></i>,
-      link: "/customer-support",
-      name: "Customer Support",
+      link: "/subscription",
+      name: "Subscription",
     },
     {
       icon: <i className="fa-solid fa-bell  text-xl mr-3 rounded-full"></i>,
@@ -102,9 +62,9 @@ const Sidebar = ({ hamb, setHamb }) => {
       name: "Notification",
     },
     {
-      icon: <i className="fa-solid fa-star  text-xl mr-3 rounded-full"></i>,
-      link: "/reviews",
-      name: "Reviews",
+      icon: <i className="fa-solid fa-truck text-xl mr-3 rounded-full"></i>,
+      link: "/brands",
+      name: "Brands",
     },
 
     {
@@ -112,12 +72,13 @@ const Sidebar = ({ hamb, setHamb }) => {
       link: "/faq",
       name: "FAQ",
     },
+
     {
       icon: (
-        <i className="fa-solid fa-shield-halved text-xl mr-3 rounded-full" />
+        <i className="fa-solid fa-credit-card text-xl mr-3 rounded-full"></i>
       ),
-      link: "/privacy",
-      name: "Privacy policy",
+      link: "/payment",
+      name: "Transactions",
     },
   ];
 

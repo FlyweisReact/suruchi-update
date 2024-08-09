@@ -1,89 +1,105 @@
 /** @format */
-import React, { useEffect } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Col, FloatingLabel, Form, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { ValueChecker } from "../../utils/utils";
 import HOC from "../../Layout/HOC";
 import img from "../../assests/Images/product/4.png";
 import img1 from "../../assests/Images/product/1.png";
 import img2 from "../../assests/Images/product/2.png";
 import img3 from "../../assests/Images/product/3.png";
 
-const productObject = {
-  images: [img, img1, img2, img3],
-  title: "Men Black raglan jacket",
-  description:
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
-  category: "Men",
-  multipleSize: "true",
-  sizeArr: [
-    {
-      price: 550,
-      stock: 1000,
-      size: "L",
-    },
-    {
-      price: 1000,
-      stock: 200,
-      size: "XL",
-    },
-    {
-      price: 2000,
-      stock: 100,
-      size: "XXL",
-    },
-  ],
-  price: 500,
-  stock: 100,
-};
-
 const SingleProduct = () => {
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "instant",
-    });
-  }, []);
-
   return (
     <>
       <section className="sectionCont">
         <div className="img-cont">
-          {productObject?.images?.map((i, index) => (
-            <img
-              src={i}
-              alt=""
-              key={`Images${index}`}
-              className="centerImage"
-            />
-          ))}
+          <img src={img} alt="" className="centerImage" />
+          <img src={img1} alt="" className="centerImage" />
+          <img src={img2} alt="" className="centerImage" />
+          <img src={img3} alt="" className="centerImage" />
         </div>
 
-        {ValueChecker(productObject?.title, "Title")}
-        {ValueChecker(productObject?.description, "Description")}
-        {ValueChecker(productObject?.category, "Category")}
+        <Form className="mt-3">
+          <Row>
+            <Col xs={12} md={3}>
+              <Form.Group className="mb-3">
+                <Form.Label>ID</Form.Label>
+                <Form.Control type="text" value={1} />
+              </Form.Group>
+            </Col>
+            <Col xs={12} md={3}>
+              <Form.Group className="mb-3">
+                <Form.Label>Product Name</Form.Label>
+                <Form.Control type="text" value={"Men Black raglan jacket"} />
+              </Form.Group>
+            </Col>
+            <Col xs={12} md={3}>
+              <Form.Group className="mb-3">
+                <Form.Label>Brand Name</Form.Label>
+                <Form.Control type="text" value={"H&M"} />
+              </Form.Group>
+            </Col>
 
-        {productObject?.multipleSize === "true" ? (
-          productObject?.sizeArr?.length > 0 && (
-            <React.Fragment>
-              <p className="title"> Sizes </p>
-              {productObject?.sizeArr?.map((i, index) => (
-                <div className="SizeArr" key={`sizeArr${index}`}>
-                  <p> Price : {i?.price} </p>
-                  <p> Size : {i?.size} </p>
-                  <p> stock : {i?.stock} </p>
-                </div>
-              ))}
-            </React.Fragment>
-          )
-        ) : (
-          <>
-            {ValueChecker(productObject?.price, "Price")}
-            {ValueChecker(productObject?.stock, "Stock")}
-          </>
-        )}
+            <Col xs={12} md={3}>
+              <Form.Group className="mb-3">
+                <Form.Label>Price</Form.Label>
+                <Form.Control type="number" min={0} value={10000} />
+              </Form.Group>
+            </Col>
+            <Col xs={12} md={3}>
+              <Form.Group className="mb-3">
+                <Form.Label>Discounted Price</Form.Label>
+                <Form.Control type="number" min={0} value={2000} />
+              </Form.Group>
+            </Col>
+            <Col xs={12} md={3}>
+              <Form.Group className="mb-3">
+                <Form.Label>Product Size</Form.Label>
+                <Form.Control type="text" value="M" />
+              </Form.Group>
+            </Col>
+            <Col xs={12} md={3}>
+              <Form.Group className="mb-3">
+                <Form.Label>Minimum Order Quantity</Form.Label>
+                <Form.Control type="number" min={0} value={2} />
+              </Form.Group>
+            </Col>
+            <Col xs={12} md={3}>
+              <Form.Group className="mb-3">
+                <Form.Label>Category</Form.Label>
+                <Form.Control type="text" value={"Men"} />
+              </Form.Group>
+            </Col>
+            <Col xs={12} md={3}>
+              <Form.Group className="mb-3">
+                <Form.Label>Sub-category</Form.Label>
+                <Form.Control type="text" value={"Shirts"} />
+              </Form.Group>
+            </Col>
+            <Col xs={12} md={3}>
+              <Form.Group className="mb-3">
+                <Form.Label>Rating</Form.Label>
+                <Form.Control type="text" value={5} />
+              </Form.Group>
+            </Col>
 
-        <Link to="/Product">
+            <Col xs={12} md={12}>
+              <Form.Group className="mb-3">
+                <Form.Label>Description</Form.Label>
+                <FloatingLabel>
+                  <Form.Control
+                    as="textarea"
+                    style={{ height: "100px" }}
+                    value={
+                      "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available. "
+                    }
+                  />
+                </FloatingLabel>
+              </Form.Group>
+            </Col>
+          </Row>
+        </Form>
+
+        <Link to={-1}>
           <Button variant="dark">Back</Button>
         </Link>
       </section>
